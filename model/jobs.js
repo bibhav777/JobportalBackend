@@ -1,5 +1,5 @@
 var db= require('../dbconfiguration/dbconfiguration.js');
-const Players= db.sequelize.define('Players',{
+const Jobs= db.sequelize.define('Jobs',{
 
 id:{
 
@@ -18,46 +18,46 @@ image: {
 
 },
 
-fullname: {
+cname: {
 
 	type: db.Sequelize.STRING,
 	allowNull: false
 },
 
-dob: {
-    type: db.Sequelize.DATEONLY,
+jobtitle: {
+    type: db.Sequelize.STRING,
     allowNull: false
 
 
 },
 
-address: {
+jobdescription: {
     type: db.Sequelize.STRING,
     allowNull:false
 
 
 },
-sportsinvolved: {
+experience: {
     type: db.Sequelize.STRING,
     allowNull:false
 
 
 },
-height: {
-    type: db.Sequelize.INTEGER,
+education: {
+    type: db.Sequelize.STRING,
     allowNull:false
 
 
 },
 
-registersince: {
-    type: db.Sequelize.DATEONLY,
+location: {
+    type: db.Sequelize.STRING,
     allowNull:false
 
 
 },
 
-position: {
+procedure: {
     type: db.Sequelize.STRING,
     allowNull:false
 }
@@ -72,12 +72,12 @@ position: {
 
 {
   freezeTableName:true,
-  tableName: 'players'
+  tableName: 'jobs'
 
 });
 
 
-Players.sync({force:false})
+Jobs.sync({force:false})
 .then(function(result){
  console.log(result)  
 
@@ -91,7 +91,7 @@ console.log(err)
 })
 
 module.exports={
-   Players
+   Jobs
 
 }
 

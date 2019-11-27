@@ -7,7 +7,7 @@ const swaggerUi= require('swagger-ui-express');
  var swaggerDefinition={
  info: {
     // API informations (required)
-    title: 'Sports Management', // Title (required)
+    title: 'Job Portal', // Title (required)
     version: 'v1', // Version (required)
     description: 'API Documentation', // Description (optional)
   },
@@ -36,7 +36,7 @@ myapp.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 var controller= require('./controllers/UserController.js');
 var authController=require('./controllers/AuthController.js');
 
-var player=require('./controllers/PlayersController.js');
+var job=require('./controllers/JobsController.js');
 var matches= require('./controllers/MatchesController.js');
 var matchmodel=require('./model/matches.js')
 var bodyParser= require('body-parser');
@@ -179,21 +179,21 @@ myapp.get('/v1/adminDashboard',authController.verifyToken,function(req,res){
 *       description: sucessfull  
 */
 
-myapp.post('/addplayers',uploads.single('image'),player.addPlayer,function(req,res,next){
+myapp.post('/addjobs',uploads.single('image'),job.addJob,function(req,res,next){
 res.status(201);
-res.send({"message":"Player is successfully added"});
+res.send({"message":"Job is successfully added"});
 
 
 });
 
-myapp.get('/viewplayers',player.viewplayers,function(req,res,next){
+myapp.get('/viewplayers',job.viewplayers,function(req,res,next){
 res.status(201);
 
 
 });
 
 
-myapp.get('/players/:uid',player.getplayer,function(req,res,next){
+myapp.get('/players/:uid',job.getplayer,function(req,res,next){
 
 /**
 * @swagger
@@ -231,7 +231,7 @@ myapp.get('/players/:uid',player.getplayer,function(req,res,next){
 */
 
 });
-myapp.put('/updateplayers/:uid',player.updateplayer,function(req,res){
+myapp.put('/updateplayers/:uid',job.updateplayer,function(req,res){
 console.log(req.params.uid);
 
 
@@ -328,7 +328,7 @@ console.log(req.params.uid);
 });
 
 
-myapp.delete('/deleteplayers/:uid',player.deleteplayers,function(req,res){
+myapp.delete('/deleteplayers/:uid',job.deleteplayers,function(req,res){
 console.log(req.params.uid);
 
 

@@ -1,4 +1,4 @@
-var player= require('../model/players.js');
+var job= require('../model/jobs.js');
 
 //sss//var uploads= multer({
  //dest: 'uploads'
@@ -7,17 +7,17 @@ var player= require('../model/players.js');
 //});
 
 
-function addPlayer(req,res,next){
+function addJob(req,res,next){
 
-	player.Players.create({
+	job.Jobs.create({
      image: req.file.filename,
-     fullname: req.body.fullname,
-     dob:req.body.dob,
-     address: req.body.address,
-     sportsinvolved: req.body.sports,
-     height: req.body.height,
-     registersince: req.body.regisdate,
-     position:req.body.position 
+     cname: req.body.cname,
+     jobtitle:req.body.jobtitle,
+     jobdescription: req.body.jobdescription,
+     experience: req.body.experience,
+     education: req.body.education,
+     location: req.body.location,
+     procedure:req.body.procedure 
 
 
 })
@@ -28,7 +28,7 @@ next();
 })
 .catch(function(err){
  
-next({"status":500, "message": "Failed to add players"});
+next({"status":500, "message": "Failed to add jobsssss"});
 
 }) ;
 };
@@ -131,5 +131,5 @@ next();
 
 
 module.exports= {
-	addPlayer,viewplayers,deleteplayers,getplayer,updateplayer
+	addJob,viewplayers,deleteplayers,getplayer,updateplayer
 }

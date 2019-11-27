@@ -1,5 +1,5 @@
 var Sequelize= require('sequelize');
-var sequelize= new Sequelize('spmanagement','bibav','degea123',{
+var sequelize= new Sequelize('jobapp','bibav','degea123',{
  host: 'localhost',
  dialect: 'mysql',
  logging: false
