@@ -140,44 +140,8 @@ res.send(
 });
 
 myapp.get('/v1/adminDashboard',authController.verifyToken,function(req,res){
-
-
-
 });
-/**
-* @swagger
-* /addplayers:
-*  post:
-*   tags:
-*    - Addplayers
-*   name: AddPlayers
-*   produces: application/json
-*   parameters: 
-*   - name: addplayer
-*     in: body
-*     schema:
-*       type: object
-*       properties: 
-*        image:
-*         type: string
-*        fullname:
-*         type: string
-*        dob:
-*         type: date
-*        address:
-*         type: string 
-*        sportsinvolved:
-*         type: string 
-*        height:
-*         type: string 
-*        registersince:
-*         type: string
-*        position: 
-*         type: string
-*   responses:
-*     201:
-*       description: sucessfull  
-*/
+
 
 myapp.post('/addjobs',uploads.single('image'),job.addJob,function(req,res,next){
 res.status(201);
@@ -186,52 +150,25 @@ res.send({"message":"Job is successfully added"});
 
 });
 
-myapp.get('/viewplayers',job.viewplayers,function(req,res,next){
+myapp.get('/viewjobs',job.viewjobs,function(req,res,next){
 res.status(201);
 
 
 });
 
 
-myapp.get('/players/:uid',job.getplayer,function(req,res,next){
+myapp.get('/jobs/:uid',job.getjob,function(req,res,next){
 
-/**
-* @swagger
-* /updateplayers/:uid:
-*  put:
-*   tags:
-*    - Updateplayers
-*   name: UpdatePlayers
-*   produces: application/json
-*   parameters: 
-*   - name: updateplayers
-*     in: body
-*     schema:
-*       type: object
-*       properties: 
-*        image:
-*         type: string
-*        fullname:
-*         type: string
-*        dob:
-*         type: date
-*        address:
-*         type: string 
-*        sportsinvolved:
-*         type: string 
-*        height:
-*         type: string 
-*        registersince:
-*         type: string
-*        position: 
-*         type: string
-*   responses:
-*     201:
-*       description: sucessfull  
-*/
+
 
 });
-myapp.put('/updateplayers/:uid',job.updateplayer,function(req,res){
+myapp.put('/updatejobs/:uid',job.updatejob,function(req,res){
+console.log(req.params.uid);
+
+
+});
+
+myapp.delete('/deletejobs/:uid',job.deletejobs,function(req,res){
 console.log(req.params.uid);
 
 
@@ -328,11 +265,7 @@ console.log(req.params.uid);
 });
 
 
-myapp.delete('/deleteplayers/:uid',job.deleteplayers,function(req,res){
-console.log(req.params.uid);
 
-
-});
 
 
 myapp.use(function(err,req,res,next){

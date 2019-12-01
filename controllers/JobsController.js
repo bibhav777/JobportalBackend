@@ -34,8 +34,8 @@ next({"status":500, "message": "Failed to add jobsssss"});
 };
 
 
-function viewplayers(req,res,next){
-   player.Players.findAll(
+function viewjobs(req,res,next){
+   job.Jobs.findAll(
   
 )
    .then(function(result){
@@ -51,8 +51,8 @@ function viewplayers(req,res,next){
 
 
 }
-function getplayer(req,res,next){
-player.Players.findOne({
+function getjob(req,res,next){
+job.Jobs.findOne({
 where:{id:req.params.uid}
 
 }).then(function(result){
@@ -69,15 +69,15 @@ next();
 
 
 }
-function updateplayer(req,res,next){
-player.Players.update({
- fullname: req.body.fullname,
-     dob:req.body.dob,
-     address: req.body.address,
-     sportsinvolved: req.body.sports,
-     height: req.body.height,
-     registersince: req.body.regisdate,
-     position:req.body.position 
+function updatejob(req,res,next){
+job.Jobs.update({
+ cname: req.body.cname,
+  jobtitle:req.body.jobtitle,
+  jobdescription: req.body.jobdescription,
+  experience: req.body.experience,
+  education: req.body.education,
+  location: req.body.location,
+  procedure:req.body.procedure 
  
 },{
   where:{
@@ -106,9 +106,9 @@ next({status:200,"message":"updated"});
 }
 
 
-function deleteplayers(req,res,next){
-player.Players.destroy({
-       where:{id :req.params.uid}
+function deletejobs(req,res,next){
+job.Jobs.destroy({
+       where:{id:req.params.uid}
 
 
 
@@ -131,5 +131,5 @@ next();
 
 
 module.exports= {
-	addJob,viewplayers,deleteplayers,getplayer,updateplayer
+	addJob,viewjobs,deletejobs,getjob,updatejob
 }
