@@ -71,59 +71,13 @@ next();
 })
 
 myapp.use(bodyParser.json());
-/**
-* @swagger
-* /v1/registration:
-*  post:
-*   tags:
-*    - Registration
-*   name: Registration
-*   produces: application/json
-*   parameters: 
-*   - name: user
-*     in: body
-*     schema:
-*       type: object
-*       properties: 
-*        username:
-*         type: string
-*        email:
-*         type: string
-*        password:
-*         type: string
-*   responses:
-*     201:
-*       description: sucessfull  
-*/
-
 
 myapp.post('/v1/registration',controller.validator,controller.hashGenerator,controller.registerUser, function(req,res,next){
  res.status(201);
  res.send({"message":"User was successfully registered"});
 
 });
-/**
-* @swagger
-* /v1/login:
-*  post:
-*   tags:
-*    - Login
-*   name: Login
-*   produces: application/json
-*   parameters: 
-*   - name: user
-*     in: body
-*     schema:
-*       type: object
-*       properties: 
-*        username:
-*         type: string
-*        password:
-*         type: string
-*   responses:
-*     200:
-*       description: sucessfull  
-*/
+
 myapp.post('/v1/login',authController.validator,authController.pwdcheck,authController.jwtToken,function(req,res,next			){
 res.status(200);
 res.send(
@@ -132,10 +86,6 @@ res.send(
 		"message":"LOGIN SUCCESSFUL"
 }
 	);
- 
-
-
-
  
 });
 
@@ -176,87 +126,23 @@ console.log(req.params.uid);
 myapp.get('/uploads',function(req,res,next){
 res.send(publicDir);
 console.log('asdasd');
-
 })
-/**
-* @swagger
-* /addmatches:
-*  post:
-*   tags:
-*    - Addmatches
-*   name: AddMatches
-*   produces: application/json
-*   parameters: 
-*   - name: addmatches
-*     in: body
-*     schema:
-*       type: object
-*       properties: 
-*        firstteam:
-*         type: string
-*        secondteam:
-*         type: string
-*        sportstype:
-*         type: date
-*        date:
-*         type: date 
-*        time:
-*         type: string 
-*   responses:
-*     201:
-*       description: sucessfull  
-*/
 
 myapp.post('/addmatches',matches.addMatches,function(req,res,next){
 res.status(201);
 res.send({"message":"Match is added successfuully"})
-
-
 });
+
 myapp.get('/viewmatches',matches.viewmatches,function(req,res,next){
 res.status(201);
-
-
 });
 
 myapp.delete('/deletematches/:uid',matches.deletematches,function(req,res){
 console.log(req.params.uid);
-
-
 });
 
 
 myapp.get('/matches/:uid',matches.getmatches,function(req,res,next){
-
-/**
-* @swagger
-* /updatematches/:uid:
-*  put:
-*   tags:
-*    - updatematches
-*   name: UpdateMatches
-*   produces: application/json
-*   parameters: 
-*   - name: updatematches
-*     in: body
-*     schema:
-*       type: object
-*       properties: 
-*        firstteam:
-*         type: string
-*        secondteam:
-*         type: string
-*        sportstype:
-*         type: date
-*        date:
-*         type: date 
-*        time:
-*         type: string 
-*   responses:
-*     201:
-*       description: sucessfull  
-*/
-
 });
 myapp.put('/updatematches/:uid',matches.updatematches,function(req,res){
 console.log(req.params.uid);
