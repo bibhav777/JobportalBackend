@@ -32,13 +32,13 @@ jobtitle: {
 },
 
 jobdescription: {
-    type: db.Sequelize.STRING,
+    type: db.Sequelize.TEXT,
     allowNull:false
 
 
 },
 experience: {
-    type: db.Sequelize.STRING,
+    type: db.Sequelize.TEXT,
     allowNull:false
 
 

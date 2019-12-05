@@ -109,9 +109,11 @@ res.status(201);
 
 myapp.get('/jobs/:uid',job.getjob,function(req,res,next){
 
-
-
 });
+
+
+
+
 myapp.put('/updatejobs/:uid',job.updatejob,function(req,res){
 console.log(req.params.uid);
 
